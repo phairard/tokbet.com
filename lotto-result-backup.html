@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Test API Lotto</title>
+</head>
+<body>
+
+<div class="container">
+	<div class="row">
+		<div style="overflow-x:auto;">
+		<div class="header-table">
+		<h3 style="color: #fff !important; margin-top:20;text-align:center;">หวยรัฐบาลไทย</h3>
+		<p class="text-right" id="thlotto-date" style="text-align: center;color:#fff">
+		<table class="table-result" id="thlottotable">
+		<tr>
+		<th>รางวัลที่ 1</th>
+		<th>สองตัวล่าง</th>
+		<th>สามตัวหน้า</th>
+		<th>สามตัวล่าง</th>
+		</tr>
+		<tr>
+		<td id="thlotto-r1" style="color: #ff0000;"></td>
+		<td id="thlotto-r2"></td>
+		<td id="thlotto-r3"></td>
+		<td id="thlotto-r4"></td>
+		</tr>
+		</table>
+		</div>
+		</div>
+		<div style="overflow-x:auto;">
+		<div class="header-table">
+		<h3 style="margin-top:20;text-align:center; color: #fff !important;">หวย ธกส.</h3>
+		<p class="text-right" id="baaclotto-date" style="text-align: center;color:#fff">
+		<table class="table-result" id="baaclottotable">
+		<tr>
+		<th>สามตัวบน</th>
+		<th>สองตัวล่าง</th>
+		</tr>
+		<tr>
+		<td id="baaclotto-r1" style="color: #ff0000;"></td>
+		<td id="baaclotto-r2"></td>
+		</tr>
+		</table>
+		</div>
+		</div>
+		<div style="overflow-x:auto;">
+		<div class="header-table">
+		<h3 style="margin-top:20;text-align:center; color: #fff !important;">หวยออมสิน</h3>
+		<p class="text-right" id="gsblotto-date" style="text-align: center;color:#fff">
+		<table class="table-result" id="gsblottotable">
+		<tr>
+		<th>สามตัวบน</th>
+		<th>สองตัวล่าง</th>
+		</tr>
+		<tr>
+		<td id="gsblotto-r1" style="color: #ff0000;"></td>
+		<td id="gsblotto-r2"></td>
+		</tr>
+		</table>
+		</div>
+		</div>
+		<div style="overflow-x:auto;">
+		<div class="header-table">
+		<h3 style="margin-top:20;text-align:center; color: #fff !important;">หวยรัฐบาล (ชุด)</h3>
+		<p class="text-right" id="thailottoset-date" style="text-align: center;color:#fff">
+		<table class="table-result" id="thailottosettable">
+		<tr>
+		<th>เลขชุดหกตัว</th>
+		</tr>
+		<tr>
+		<td id="thailottoset-r1" style="color: #ff0000;"></td>
+		</tr>
+		</table>
+		</div>
+		</div>
+		<div style="overflow-x:auto;">
+		<div class="header-table">
+		<h3 style="margin-top:20;text-align:center; color: #fff !important;">หวยลาว (ชุด)</h3>
+		<p class="text-right" id="loasset-date" style="text-align: center;color:#fff">
+		<table class="table-result" id="loassettable">
+		<tr>
+		<th>เลขชุดสี่ตัว</th>
+		</tr>
+		<tr>
+		<td id="loasset-r1" style="color: #ff0000;"></td>
+		</tr>
+		</table>
+		</div>
+		</div>
+		<div style="overflow-x:auto;">
+		<div class="header-table">
+		<h3 style="margin-top:20;text-align:center; color: #fff !important;">หวยหุ้นไทย</h3>
+		<p class="text-right" id="stockthailotto-date" style="text-align: center;color:#fff">
+		<table class="table-result" id="stockthailottotable">
+		<tr>
+		<th>รอบ</th>
+		<th>สามตัวบน</th>
+		<th>สองตัวล่าง</th>
+		</tr>
+		<tr></tr>
+		</table>
+		</div>
+		</div>
+		<div style="overflow-x:auto;">
+		<div class="header-table">
+		<h3 style="margin-top:20;text-align:center; color: #fff !important;">หวยหุ้นต่างประเทศ</h3>
+		<p class="text-left" id="stockinterlotto-date" style="text-align: center;color:#fff">
+		<table class="table-result" id="stockinterlottotable">
+		<tr>
+		<th>หวย</th>
+		<th>สามตัวบน</th>
+		<th>สองตัวล่าง</th>
+		</tr>
+		</table>
+		</div>
+		</div>
+		<div style="overflow-x:auto;">
+		<div class="header-table">
+		<h3 style="margin-top:20;text-align:center; color: #fff !important;">หวยจับยี่กี</h3>
+		<p class="text-right" id="yeeky-date" style="text-align: center;color:#fff">
+		<table class="table-result" id="yeekytable">
+		<tr>
+		<th>รอบที่</th>
+		<th>สามตัวบน</th>
+		<th>สองตัวล่าง</th>
+		</tr>
+		</table>
+		</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<script>
+	var url = 'https://api.tb8989.net/LineBot/Report/api/getReportAll/';
+	var postsContainer = document.querySelector('.lastest-posts');
+	$.ajax({
+
+		url: url,
+		cache: false,
+		success: function (html) {
+
+			var getData = JSON.parse(html);
+			var thailotto = getData.thailotto;
+			var baaclotto = getData.baaclotto;
+			var gsblotto = getData.gsblotto;
+			var thailottoset = getData.thailottoset;
+			var loasset = getData.loasset;
+			var stockthailotto = getData.stockthailotto;
+			var stockinterlotto = getData.stockinterlotto;
+			var yeekylotto = getData.yeekylotto;
+
+			if (thailotto != 0) {
+
+				thailotto.forEach(element => {
+				document.getElementById("thlotto-r1").innerHTML = element.rewardnumberone;
+				document.getElementById("thlotto-r2").innerHTML = element.towdown;
+				document.getElementById("thlotto-r3").innerHTML = element.threefront;
+				document.getElementById("thlotto-r4").innerHTML = element.threeback;
+				const date = new Date(element.round)const result = date.toLocaleDateString('th-TH', {year: 'numeric',month: 'long',day: 'numeric'
+
+			if (baaclotto != 0) {baaclotto.forEach(element => {document.getElementById("baaclotto-r1").innerHTML = element.threetop;document.getElementById("baaclotto-r2").innerHTML = element.towdown;const date = new Date(element.round)const result = date.toLocaleDateString('th-TH', {year: 'numeric',month: 'long',day: 'numeric'
+			if (gsblotto != 0) {gsblotto.forEach(element => {document.getElementById("gsblotto-r1").innerHTML = element.threetop;document.getElementById("gsblotto-r2").innerHTML = element.towdown;});} else {document.getElementById("thailottosettable").innerHTML = "-";}if (loasset != 0) {loasset.forEach(element => {document.getElementById("loasset-r1").innerHTML = element.fourset;const date = new Date(element.round)const result = date.toLocaleDateString('th-TH', {year: 'numeric',month: 'long',day: 'numeric'if (stockthailotto != 0) {stockthailotto.forEach(element => {function myFuncDate() {const date = new Date(element.round)const result = date.toLocaleDateString('th-TH', {year: 'numeric',month: 'long',day: 'numeric'});} else {document.getElementById("stockthailottotable").innerHTML = "-";}
+			if (stockinterlotto != 0) {stockinterlotto.forEach(element => {function myFuncDate() {const date = new Date(element.round)const result = date.toLocaleDateString('th-TH', {year: 'numeric',month: 'long',day: 'numeric'if (yeekylotto != 0) {yeekylotto.forEach(element => {function myFuncDate() {const date = new Date(element.round_big)const result = date.toLocaleDateString('th-TH', {year: 'numeric',month: 'long',day: 'numeric' element.round;cell2.innerHTML = element.topthree;cell3.innerHTML = element.towbelow;myFuncDate();});} else {document.getElementById("yeekytable").innerHTML = "-";}}});
+</script>
+
+
+</body>
+</html>

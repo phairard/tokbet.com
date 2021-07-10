@@ -1,0 +1,31 @@
+form login :
+Method = POST 
+Url = https://api.tb8989.net/LineBot/tokbetlogin/นามสกุลเว็บ.php
+form-data :
+username = input name = "username" ,
+password = input name = "paw"
+
+Link register
+Url = https://tokbet.com/register/otp/นามสกุลเว็บ
+
+API หวยทั้งหมด
+Url = https://api.tb8989.net/LineBot/Report/api/getReportAll/;
+
+API หวยหุ้นไทย
+Url = https://api.tb8989.net/LineBot/Report/api/getReportAll/thaic.php
+
+API หุ่นต่างประเทศ
+Url = https://api.tb8989.net/LineBot/Report/api/getReportAll/inter.php
+
+API หวยยี่กี
+Url = https://api.tb8989.net/LineBot/Report/api/getReportAll/yeeky.php
+
+API ธกส
+Url = https://api.tb8989.net/LineBot/Report/api/getReportAll/gsb.php
+
+API ฮานอย
+Url = https://api.tb8989.net/LineBot/Report/api/getReportAll/hanoi.php
+
+API ฮานอยพิเศษ
+Url = https://api.tb8989.net/LineBot/Report/api/getReportAll/hanois.php
+
