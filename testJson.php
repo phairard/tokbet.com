@@ -60,7 +60,7 @@ foreach ($json as $item)
     foreach ($item->images as $img)
     {
             echo 'Image Cover Type: ' .$img->coverType .'<br/>';
-            echo 'URL: ' .$img->url .'<br/>';
+            echo 'URL: ' .$img->url;
     }
 }
 ?>
